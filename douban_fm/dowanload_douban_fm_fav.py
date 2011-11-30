@@ -6,7 +6,12 @@
 至于用途，请看文件名。
 
 注： 文件会下载到当前目录
-依赖：wget
+依赖：wget, python2.6 or python2.7
+
+使用：
+        Linux、Mac下请安装wget
+        Win下请安装"wget for window"
+        如果是python2.5，请自己提供json库
 '''
 __author__ = 'qleelulu@gmail.com (@QLeelulu)'
 

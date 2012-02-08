@@ -18,12 +18,19 @@ __author__ = 'qleelulu@gmail.com (@QLeelulu)'
 
 import os, sys, urllib, urllib2, cookielib, re, json
 
+url_pic_request="http://douban.fm/j/new_captcha"
+url_pic ="http://douban.fm/misc/captcha?size=m&id="
+
 cj = cookielib.CookieJar()
 opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+captcha_id=opener.open(url_pic_request).read().replace('"','')
+print "http://douban.fm/misc/captcha?size=m&id=%s" % captcha_id     
 url_login = 'http://douban.fm/j/login'
 alias = raw_input('输入用户名:')
 form_password = raw_input('输入密码:')
-post_data = {'alias': alias, 'form_password':form_password}
+print u'请将如下链接复制到浏览器，获取验证码'
+captcha_solution=raw_input('输入验证码:')
+post_data = {"source":"radio",'alias': alias, 'form_password':form_password,'captcha_solution':captcha_solution,"captcha_id":captcha_id}
 
 lg = opener.open(url_login, urllib.urlencode(post_data)).read()
 

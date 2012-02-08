@@ -23,12 +23,12 @@ url_pic ="http://douban.fm/misc/captcha?size=m&id="
 
 cj = cookielib.CookieJar()
 opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
-captcha_id=opener.open(url_pic_request).read().replace('"','')
-print "http://douban.fm/misc/captcha?size=m&id=%s" % captcha_id     
+captcha_id=opener.open(url_pic_request).read().replace('"','')  
 url_login = 'http://douban.fm/j/login'
 alias = raw_input('输入用户名:')
 form_password = raw_input('输入密码:')
 print u'请将如下链接复制到浏览器，获取验证码'
+print "http://douban.fm/misc/captcha?size=m&id=%s" % captcha_id   
 captcha_solution=raw_input('输入验证码:')
 post_data = {"source":"radio",'alias': alias, 'form_password':form_password,'captcha_solution':captcha_solution,"captcha_id":captcha_id}
 
